@@ -14,17 +14,21 @@ tr
         strong (Expired)
   td
     =booking.status
-  td.tools
-    if (booking.status !== 'closed')
+  if (booking.status != 'closed' && booking.user._id == user._id)
+    td.tools
       a(
         href="/bookings/" + booking._id + "/edit",
         data-toggle="modal",
         data-target="#bookingModal"
       ).edit
-  td.tools
-    if (booking.status === 'open')
+    td.tools
       a(
         data-href="/bookings/" + booking._id + "/remove",
         data-target="#delete-booking-modal",
         title="Cancel booking"
       ).cancel.copy-href
+  else 
+    td.tools
+      a
+    td.tools
+      a

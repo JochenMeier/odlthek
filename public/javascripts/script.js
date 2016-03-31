@@ -40,7 +40,15 @@ $(function () {
       window.location.reload(true);
     }
   });
-
+  $('#InputHwid').on('change', function() {
+    $.ajax({
+      url: "/gadgets/new/validate",
+      data: {hwid: this.value},
+      success: function(response){
+        $('.form-group:first-of-type p').attr('class', response.class).html(response.message);
+      }
+    });
+  });  
   $(document).on('click', '.load-more', function () {
     var btn = $(this);
     btn.button('loading');

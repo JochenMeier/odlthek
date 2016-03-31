@@ -23,7 +23,7 @@ block content
         strong Something went wrong
         br
         if (errors.name === 'MongoError')
-          =errors.err
+          p Die Angegebene HWID '#{gadget.hwid}' existiert bereits !
         else if (errors.name === 'ValidationError')
           - each error in errors.errors
             =error.message
@@ -42,7 +42,7 @@ block content
         .form-group
           label HWID:
           input(type="text", name='hwid', value=gadget.hwid, id='InputHwid').form-control
-
+          p
         .form-group
           label Brand:
           input(type="text", name='brand', value=gadget.brand).form-control

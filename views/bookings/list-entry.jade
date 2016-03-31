@@ -2,12 +2,12 @@ tr
   td
     =booking.user.name  
   td
-    a(href="/gadgets/" + booking.gadget._id)
+    a(href="/gadgets/" + (booking.gadget.id || gadget._id))
       =booking.gadgetname
-      | &nbsp;(
-      =booking.gadget.hwid
+      | &nbsp;
+      | (
+      =booking.gadget.hwid || gadget.hwid
       |)
-  td
     =fmtDatetime(booking.start)
   td
     =fmtDatetime(booking.end)

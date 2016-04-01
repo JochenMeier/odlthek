@@ -260,6 +260,7 @@ var BookingsController = {
               username: req.session.user.displayname,
               start: sBooking,
               end: eBooking,
+              booking.notificationSent : false,
               openend: req.body.openend
             }, function (err, booking) {
               if (err) { return next(err); }

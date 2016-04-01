@@ -28,17 +28,19 @@ li.gadet-entry
       br
       if(!stats[gadget._id])
         p Available
-
-      else
-        if(stats[gadget._id].status === 'open')
-          p Reserved
+      else 
+        if(stats[gadget._id].status === 'overdrawn')
+          p Overdrawn
         else
-          p Not available
+          if(stats[gadget._id].status === 'open')
+            p Reserved
+          else  
+            p Not available
 
-        if(stats[gadget._id].lastBooking)
-          b Last booked by:
-          br
-          =stats[gadget._id].lastBooking.email
+          if(stats[gadget._id].lastBooking)
+            b Last booked by:
+            br
+            =stats[gadget._id].lastBooking.email
 
       br
       .controls

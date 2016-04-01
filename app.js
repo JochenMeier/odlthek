@@ -94,8 +94,8 @@ app.use(function (req, res, next) {
 });
 
 
-// Start scheduler for recurring tasks
-// Cron.start();
+// Start scheduler for recurring tasks - Checking for overdrawn devices
+Cron.start();
 
 
 // Register view helper

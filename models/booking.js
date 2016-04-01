@@ -36,6 +36,7 @@ var BookingSchema = new Mongoose.Schema({
     enum: [
       'open',
       'handout',
+      'overdrawn',
       'closed'
     ],
     default: 'open'

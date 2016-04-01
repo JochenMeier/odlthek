@@ -50,7 +50,7 @@ tr
         data-target="#handout-modal",
         title="Handout gadget"
       ).handOut.copy-href
-    if (booking.status == 'handout')
+    if (booking.status == 'handout' || booking.status == 'overdrawn')
       a(
         data-href="/bookings/"+booking._id+"/takeback",
         data-target="#takeback-modal",

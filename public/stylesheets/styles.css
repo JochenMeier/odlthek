@@ -478,7 +478,9 @@ tr .load-more {
 	border-radius: 0 10px 0 0;
 	color: #fff;
 }
-
+.details .tools-box .active {
+	background-color:#85dbaa;
+}
 .details .info {
 	padding: 10px;
 	background: #415060;

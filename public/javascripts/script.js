@@ -47,7 +47,7 @@ $(function () {
       success: function(response){
         $('.form-group:first-of-type p').attr('class', response.class).html(response.message);
         if(response.class == 'err') {
-          $('.col-md-4.tools-box > input.btn').toggleClass('active').attr('type','button');
+          $('.col-md-4.tools-box > input.btn').attr('class','btn active').attr('type','button');
         } else {
           $('.col-md-4.tools-box > input.btn').removeClass('active').attr('type','submit');          
         }

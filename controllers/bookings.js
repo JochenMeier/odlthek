@@ -101,9 +101,9 @@ var BookingsController = {
       where.status = req.params.status || 'handout';
     }
 
-    BookingModel.count({$or:[where,status: 'overdrawn']}, function (err, count) {
+    BookingModel.count({$or:[where,{status: 'overdrawn'}]}, function (err, count) {
 
-      BookingModel.find({$or:[where,status: 'overdrawn']})
+      BookingModel.find({$or:[where,{status: 'overdrawn'}]})
         .sort({ username: 1, start: -1 })
         .skip(itemsFrom)
         .limit(ITEMS_PER_PAGE)

@@ -144,17 +144,32 @@ var BookingsController = {
 
 
   create: function (req, res, next) {
-    GadgetModel.findById(req.params.id, function (err, gadget) {
-      res.render('bookings/edit', {
-        booking: {},
-        gadget: gadget,
-        gadgetId: gadget._id,
-        startdate: moment().add(1, 'day').format('YYYY-MM-DD'),
-        enddate: moment().add(2, 'days').format('YYYY-MM-DD'),
-        starttime: moment().add(1, 'hour').format('HH:00'),
-        endtime: moment().add(1, 'hour').format('HH:00')
+    //falls Buchung nach regulärer Arbeitszeit gebucht wird
+    if(moment().format('HH:mm') > moment().format('18:00')) {
+      GadgetModel.findById(req.params.id, function (err, gadget) {
+        res.render('bookings/edit', {
+          booking: {},
+          gadget: gadget,
+          gadgetId: gadget._id,
+          startdate: moment().add(1,'days').format('YYYY-MM-DD'),
+          enddate: moment().add(2, 'days').format('YYYY-MM-DD'),
+          starttime: moment().format('09:00'),
+          endtime: moment().format('09:00')
+        });
       });
-    });
+    } else {
+      GadgetModel.findById(req.params.id, function (err, gadget) {
+        res.render('bookings/edit', {
+          booking: {},
+          gadget: gadget,
+          gadgetId: gadget._id,
+          startdate: moment().format('YYYY-MM-DD'),
+          enddate: moment().add(1, 'days').format('YYYY-MM-DD'),
+          starttime: moment().add(5, 'minutes').format('HH:mm'),
+          endtime: moment().add(5, 'minutes').format('HH:mm')
+        });
+      });
+    }
   },
 
 

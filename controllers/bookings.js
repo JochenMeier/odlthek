@@ -21,7 +21,7 @@ function renderBookings(req, res, next, gadget, booking, error) {
     disabled: false
   };
 
-  if (req.session.user.role !== 'editor') {
+  if (req.session.user.role !== 'admin') {
     // editors may only see other internal users
     where.email = {
       $regex : ".*sevenval",

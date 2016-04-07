@@ -30,7 +30,7 @@ function renderBookings(req, res, next, gadget, booking, error) {
   }
 
   UserModel.find(where).sort({email: 1}).exec(function (err, users) {
-    if (err) { return next(err); }c
+    if (err) { return next(err); }
 
     res.render('bookings/edit', {
       gadget: gadget,

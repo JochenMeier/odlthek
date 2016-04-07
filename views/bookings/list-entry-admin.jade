@@ -20,6 +20,8 @@ tr
         span.text-danger
           strong (Expired)
   td
+    =booking.status
+  td
     if (booking.handoutuser)
       =booking.handoutuser.name
       br

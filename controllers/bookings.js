@@ -21,10 +21,10 @@ function renderBookings(req, res, next, gadget, booking, error) {
     disabled: false
   };
 
-  if (req.session.user.role === 'editor') {
+  if (req.session.user.role !== 'editor') {
     // editors may only see other internal users
     where.email = {
-      $regex : ".*" + process.env.GOOGLE_HOSTED_DOMAIN,
+      $regex : ".*sevenval",
       $options: 'i'
     };
   }

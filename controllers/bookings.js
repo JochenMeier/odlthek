@@ -30,7 +30,7 @@ function renderBookings(req, res, next, gadget, booking, error) {
   }
 
   UserModel.find(where).sort({email: 1}).exec(function (err, users) {
-    if (err) { return next(err); }
+    if (err) { return next(err); }c
 
     res.render('bookings/edit', {
       gadget: gadget,
@@ -128,7 +128,7 @@ var BookingsController = {
             // render admin view
             res.render('bookings/list-admin', _.extend(params, {
               title: 'bookings',
-              status: where.status
+              status: req.params.status || 'handout'
             }));
           } else {
             // render user view

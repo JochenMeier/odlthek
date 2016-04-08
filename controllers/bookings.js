@@ -99,7 +99,7 @@ var BookingsController = {
       where.user = req.session.user._id;
     } else {
       // overdrawn devices must be shown in 'active' tab
-      if(req.params.status == 'handout') {
+      if(req.params.status === 'handout' || req.params.status === undefined) {
         where = {$or:[{status : req.params.status || 'handout'},{status : 'overdrawn'}]};
       } else {
         where = {status : req.params.status || 'handout'};

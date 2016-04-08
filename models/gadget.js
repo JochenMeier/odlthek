@@ -45,6 +45,11 @@ var GadgetSchema = new Mongoose.Schema({
     required: true
   },
 
+  browser : {
+    type: String,
+    required: true
+  },
+
   type: {
     type: String,
     required: true,

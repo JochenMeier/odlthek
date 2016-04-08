@@ -317,8 +317,8 @@ var GadgetController = {
 
     var form = new Formidable.IncomingForm(), errors = [], columns;
 
-    columns = [ 'hwid', 'name', 'available', 'location', 'description',
-      'brand', 'model', 'os', 'type' ];
+    columns = [ 'hwid', 'name', 'available', 'location',
+      'brand', 'model', 'os', 'browser', 'type', 'description' ];
 
     form.keepExtensions = true;
     form.uploadDir = '/tmp/';
@@ -350,11 +350,12 @@ var GadgetController = {
                   //name: line[1],
                   available: line[2],
                   location: line[3],
-                  description: line[4].replace(/\\n/g, '\n').replace(/\\t/g, ': '),
-                  brand: line[5],
-                  model: line[6],
-                  os: line[7],
-                  type: Utils.capitalize(line[8])
+                  brand: line[4],
+                  model: line[5],
+                  os: line[6],
+                  browser: line[7],
+                  type: Utils.capitalize(line[8]),
+                  description: line[9].replace(/\\n/g, '\n').replace(/\\t/g, ': ')
                 }, function (err) {
                   if (err) {
                     errors.push({ object: err, line: line });

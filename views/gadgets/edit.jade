@@ -43,6 +43,7 @@ block content
           label HWID:
           input(type="text", name='hwid', value=gadget.hwid, id='InputHwid').form-control
           p
+
         .form-group
           label Brand:
           input(type="text", name='brand', value=gadget.brand).form-control
@@ -52,13 +53,12 @@ block content
           input(type="text", name='model', value=gadget.model).form-control
 
         .form-group
-          label Description:
-          textarea(name='description').form-control
-            = gadget.description
-
-        .form-group
           label OS:
           input(type="text", name='os', value=gadget.os).form-control
+
+        .form-group
+          label Browser
+          input(type="text", name='browser', value=gadget.browser).form-control
 
         .form-group
           label Type:
@@ -66,13 +66,17 @@ block content
             - each type in types
               option(selected=gadget.type == type)
                 =type
-
         .form-group
           label Location:
           select(name='location').form-control
             - each location in locations
               option(selected=gadget.location == location)
                 =location
+
+        .form-group
+          label Description:
+          textarea(name='description').form-control
+            = gadget.description
 
         .form-group
           label Thumbnail:
@@ -89,8 +93,3 @@ block content
 
       .col-md-4.tools-box
         input(type="submit", value="Save").btn
-
-
-
-
-

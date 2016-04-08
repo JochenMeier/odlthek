@@ -310,7 +310,14 @@ var BookingsController = {
             $inc: { handoutcount: 1 }
           },
           function (err, result) {
-            res.redirect(req.headers.referer);
+            if(err){ return next(err); }
+            Mailer.sendBookingHandoutMail({
+              gadgetId: booking.gadget,
+              userId: booking.user,
+              booking: booking,
+              handoutUser: req.session.user
+            });
+          res.redirect(req.headers.referer);
           }
         );
       }
@@ -330,7 +337,12 @@ var BookingsController = {
       },
       function (err, booking) {
         if (err) { return next(err); }
-
+        Mailer.sendBookingTakebackMail({
+           gadgetId: booking.gadget,
+           userId: booking.user,
+           booking: booking,
+           takebackUser: req.session.user
+         });
         res.redirect(req.headers.referer);
       }
     );

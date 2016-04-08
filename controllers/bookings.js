@@ -98,8 +98,12 @@ var BookingsController = {
       // limit bookings to current user when users role is not admin
       where.user = req.session.user._id;
     } else {
-      // overdrawn and handout devices shown in active tab
-      where = {$or:[{status : req.params.status || 'handout'},{status : 'overdrawn'}]};
+      // overdrawn devices must be shown in 'active' tab
+      if(req.params.status == 'handout') {
+        where = {$or:[{status : req.params.status || 'handout'},{status : 'overdrawn'}]};
+      } else {
+        where = {status : req.params.status || 'handout'};
+      }
     }
     BookingModel.count(where, function (err, count) {
 

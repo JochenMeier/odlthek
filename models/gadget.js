@@ -100,6 +100,7 @@ GadgetSchema.pre('save', function (next) {
   this.keywords.push(this.model);
   this.keywords.push(this.brand);
   this.keywords.push(this.os);
+  this.keywords.push(this.browser);  
   this.keywords.push(this.type);
   this.keywords.push(this.description);
   next();

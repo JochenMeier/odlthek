@@ -44,12 +44,12 @@ $(function () {
     $.ajax({
       url: "/gadgets/new/validate",
       data: {hwid: this.value},
-      success: function(response){ 
+      success: function(response){
         $('.form-group:first-of-type p').attr('class', response.class).html(response.message);
-        if(response.class == 'err') {
-          $(this).closest('.col-md-4.tools-box > input.btn').attr('class','btn active').attr('type','button');
+        if(response.class === 'err') {
+          $('.col-md-4.tools-box > input.btn').attr('class','btn active').attr('type','button');
         } else {
-          $(this).closest('.col-md-4.tools-box > input.btn').removeClass('active').attr('type','submit');
+          $('.col-md-4.tools-box > input.btn').removeClass('active').attr('type','submit');
         }
       }
     });

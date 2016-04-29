@@ -379,7 +379,7 @@ var GadgetController = {
   },
   validate : function(req, res, next) {
     // checks if hwid contains only digits
-    if(/^\d+$/.test(req.query.hwid)) {
+    if(!/^\d+$/.test(req.query.hwid)) {
       // err -> digits only
       return res.json({
         status: true,

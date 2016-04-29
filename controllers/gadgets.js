@@ -380,30 +380,35 @@ var GadgetController = {
   validate : function(req, res, next) {
     // checks if hwid contains only digits
     if(/^\d+$/.test(req.query.hwid)) {
-      GadgetModel.find({hwid: req.query.hwid}, function(err, data) {
-    // checks if returned arr is empty, when true -> hwid is available
-      if(data.length == 0) {
-        res.json({
-          status: false,
-          message: 'die gewählte HWID ist noch verfügbar',
-          class: 'available'
-        });        
-      } else {
-        res.json({
-          status: true,
-          message: 'die gewählte HWID ist bereits vergeben !',
-          class: 'err'
-        });
-      }
-    });      
-    } else {
       // err -> digits only
-      res.json({
+      return res.json({
         status: true,
         message: 'die HWID darf nur aus Zahlen bestehen !',
         class: 'err'
       })
     }
+
+    GadgetModel.find({hwid: req.query.hwid}, function(err, data) {
+    // checks if returned arr is empty, when true -> hwid is available
+
+      if(err) {
+       return next(err);
+      }
+
+      if(data.length !== 0) {
+        return res.json({
+          status: true,
+          message: 'die gewählte HWID ist bereits vergeben !',
+          class: 'err'
+        });        
+      }
+
+      res.json({
+        status: false,
+        message: 'die gewählte HWID ist noch verfügbar',
+        class: 'available'
+      });        
+    });
   }  
 };
 

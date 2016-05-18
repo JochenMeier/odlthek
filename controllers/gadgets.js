@@ -6,7 +6,7 @@ var Formidable    = require('formidable');
 var _             = require('underscore');
 var fs            = require('fs');
 var knox          = require('knox');
-var gm            = require('gm');
+var gm            = require('gm').subClass({imageMagick:true});;
 var csv           = require('csv');
 var async         = require('async');
 var Utils         = require('../lib/utils');
@@ -54,7 +54,6 @@ function uploadImage(gadgetId, fields, files, cb) {
 
     // resize image and convert to jpg
     gm(data)
-      .options({ imageMagick: true })
       .resize(210)
       .toBuffer('jpg', function (err, buffer) {
         if (err) { return cb(err); }

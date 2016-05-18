@@ -170,7 +170,7 @@ var BookingsController = {
           startdate: moment().format('YYYY-MM-DD'),
           enddate: moment().add(1, 'days').format('YYYY-MM-DD'),
           starttime: moment().add(5, 'minutes').format('HH:mm'),
-          endtime: moment().add(5, 'minutes').format('HH:mm')
+          endtime: moment().format('18:00')
         });
       });
     }

@@ -156,9 +156,9 @@ var BookingsController = {
           gadget: gadget,
           gadgetId: gadget._id,
           startdate: moment().add(1,'days').format('YYYY-MM-DD'),
-          enddate: moment().add(2, 'days').format('YYYY-MM-DD'),
+          enddate: moment().add(1, 'days').format('YYYY-MM-DD'),
           starttime: moment().format('09:00'),
-          endtime: moment().format('09:00')
+          endtime: moment().format('18:00')
         });
       });
     } else {

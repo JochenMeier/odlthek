@@ -54,7 +54,7 @@ function uploadImage(gadgetId, fields, files, cb) {
 
     // resize image and convert to jpg
     gm(data)
-      .resize(210)
+      .resize(210,210)
       .toBuffer('jpg', function (err, buffer) {
         if (err) { return cb(err); }
 
